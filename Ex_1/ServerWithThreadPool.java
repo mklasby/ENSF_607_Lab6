@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ServerWithThreadPool {
 
@@ -38,7 +39,6 @@ public class ServerWithThreadPool {
 				socketOut = new PrintWriter(aSocket.getOutputStream(), true);
 				Palindrome pal = new Palindrome(socketOut, socketIn);
 				pool.execute(pal);
-
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

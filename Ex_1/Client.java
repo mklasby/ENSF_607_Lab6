@@ -16,15 +16,14 @@ public class Client {
 		try {
 			palinSocket = new Socket(serverName, portNumber);
 			stdIn = new BufferedReader(new InputStreamReader(System.in));
-			socketIn = new BufferedReader(new InputStreamReader(
-					palinSocket.getInputStream()));
+			socketIn = new BufferedReader(new InputStreamReader(palinSocket.getInputStream()));
 			socketOut = new PrintWriter((palinSocket.getOutputStream()), true);
 		} catch (IOException e) {
 			System.err.println(e.getStackTrace());
 		}
 	}
 
-	public void communicate()  {
+	public void communicate() {
 
 		String line = "";
 		String response = "";
@@ -33,15 +32,15 @@ public class Client {
 			try {
 				System.out.println("please enter a word: ");
 				line = stdIn.readLine();
-				if (!line.equals("QUIT")){
+				if (!line.equals("QUIT")) {
 					System.out.println(line);
 					socketOut.println(line);
 					response = socketIn.readLine();
-					System.out.println(response);	
-				}else{
+					System.out.println(response);
+				} else {
 					running = false;
 				}
-				
+
 			} catch (IOException e) {
 				System.out.println("Sending error: " + e.getMessage());
 			}
@@ -56,7 +55,7 @@ public class Client {
 
 	}
 
-	public static void main(String[] args) throws IOException  {
+	public static void main(String[] args) throws IOException {
 		Client aClient = new Client("localhost", 8099);
 		aClient.communicate();
 	}
