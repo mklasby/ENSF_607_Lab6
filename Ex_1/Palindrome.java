@@ -24,7 +24,8 @@ public class Palindrome implements Runnable {
                     break;
                 }
                 StringBuffer sb = new StringBuffer(line);
-                if (sb.reverse().equals(sb)) {
+                String rev = sb.reverse().toString();
+                if (rev.equals(sb)) {
                     socketOut.printf("%s\nIs a palindrome!\n", sb);
                 } else {
                     socketOut.printf("%s\nIs not a palindrome!\n", sb);
