@@ -18,8 +18,7 @@ public class Palindrome implements Runnable {
         while (true) {
             try {
                 line = socketIn.readLine();
-                if (line.equals("QUIT")) {
-                    socketOut.println("Good Bye!");
+                if (line == null) {
                     break;
                 }
                 StringBuffer sb = new StringBuffer(line);
