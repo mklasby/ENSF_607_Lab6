@@ -13,13 +13,13 @@ public class ServerWithThreadPool {
 	private ServerSocket serverSocket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
-	
+
 	private ExecutorService pool;
 
 	public ServerWithThreadPool() {
 		try {
-			serverSocket = new ServerSocket(9898);
-			pool = Executors.newFixedThreadPool(2);
+			serverSocket = new ServerSocket(8099);
+			pool = Executors.newFixedThreadPool(5);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -34,9 +34,9 @@ public class ServerWithThreadPool {
 				System.out.println("Console at Server side says: Connection accepted by the server!");
 				socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
 				socketOut = new PrintWriter(aSocket.getOutputStream(), true);
-				Capitalizer cap = new Capitalizer(socketOut, socketIn);
-				pool.execute(cap);
-				
+				Palindrome pal = new Palindrome(socketOut, socketIn);
+				pool.execute(pal);
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -50,10 +50,8 @@ public class ServerWithThreadPool {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
-
 
 	public static void main(String[] args) throws IOException {
 
