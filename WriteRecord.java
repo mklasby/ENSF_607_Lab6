@@ -1,5 +1,3 @@
-package Ex_3;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -116,10 +114,10 @@ public class WriteRecord {
 
 		WriteRecord d = new WriteRecord();
 
-		String textFileName = "Ex_3/someSongs.txt"; // Name of a text file that contains
+		String textFileName = "someSongs.txt"; // Name of a text file that contains
 		// song records
 
-		String objectFileName = "Ex_3/mySongs.ser"; // Name of the binary file to
+		String objectFileName = "mySongs.ser"; // Name of the binary file to
 		// serialize record objects
 
 		d.openFileInputStream(textFileName); // open the text file to read from
