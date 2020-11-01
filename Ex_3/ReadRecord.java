@@ -33,6 +33,7 @@ public class ReadRecord {
          * to read a Ex_3.MusicRecord object from a binary file that contains several
          * records. Loop should terminate when an EOFException is thrown.
          */
+<<<<<<< HEAD
         try{
             while (true) {
         }
@@ -47,22 +48,30 @@ public class ReadRecord {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+=======
+        try {
+            while (true) {
+                record = (MusicRecord) input.readObject();
+                System.out.println(record.getYear() + " " + record.getSongName() + " "
+                                    + record.getSingerName() + " " + record.getPurchasePrice());
+>>>>>>> 1006eceaf260b01d94b8d97eb7baffaf6b7f907b
             }
-            thisObj = (MusicRecord) thisObj;
+        } catch (EOFException e) {
+            System.out.println("End of file reached");
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
         }
 
-        //
-        // // TO BE COMPLETED BY THE STUDENTS
-        //
-        //
-        // } // END OF WHILE
-        // }
-        // ADD NECESSARY catch CLAUSES HERE
+        try {
+            input.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     } // END OF METHOD
 
     public static void main(String[] args) {
         ReadRecord d = new ReadRecord();
-        d.readObjectsFromFile("mySongs.ser");
+        d.readObjectsFromFile("Ex_3/mySongs.ser");
     }
 }
