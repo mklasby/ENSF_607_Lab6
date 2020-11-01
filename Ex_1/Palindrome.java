@@ -14,21 +14,20 @@ public class Palindrome implements Runnable {
     }
 
     public void isPalin() {
-        String line = null;
+        String line;
         while (true) {
             try {
                 line = socketIn.readLine();
                 if (line.equals("QUIT")) {
-                    line = "Good Bye!";
-                    socketOut.println(line);
+                    socketOut.println("Good Bye!");
                     break;
                 }
                 StringBuffer sb = new StringBuffer(line);
                 String rev = sb.reverse().toString();
                 if (rev.equals(line)) {
-                    socketOut.printf("%s\nIs a palindrome!\n", line);
+                    socketOut.printf("%s Is a palindrome!\n", line);
                 } else {
-                    socketOut.printf("%s\nIs not a palindrome!\n", line);
+                    socketOut.printf("%s Is not a palindrome!\n", line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
