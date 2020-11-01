@@ -1,5 +1,13 @@
 package Ex_1;
 
+/**
+ * Simple client to prompt user to enter Strings to be check for palindrome
+ * 
+ * @author: Davis Allan and Mike Lasby
+ * @since: Nov. 1, 2020
+ * @version: 1.0
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,8 +31,10 @@ public class Client {
 		}
 	}
 
+	/**
+	 * Prompts user for input and writes response from Palindrome to stdout.
+	 */
 	public void communicate() {
-
 		String line = "";
 		String response = "";
 		boolean running = true;

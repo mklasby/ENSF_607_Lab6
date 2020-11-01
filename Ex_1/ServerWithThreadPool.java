@@ -1,5 +1,12 @@
 package Ex_1;
 
+/**
+ * Simple server multi listening for clients on port 8099
+ * @author: Davis Allan & Mike Lasby
+ * @since: 2020-11-01
+ * @version: 1.0
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +15,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class ServerWithThreadPool {
 
@@ -29,8 +35,11 @@ public class ServerWithThreadPool {
 
 	}
 
+	/**
+	 * Listens for a client connection, creates new socket reader/writers, and
+	 * executes Palindrome.run() on one of 5 executors.
+	 */
 	public void runServer() {
-
 		try {
 			while (true) {
 				aSocket = serverSocket.accept();
