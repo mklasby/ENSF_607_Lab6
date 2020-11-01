@@ -23,7 +23,7 @@ public class ReadRecord {
         MusicRecord record;
 
         try {
-            input = new ObjectInputStream(new FileInputStream(name));
+            input = new ObjectInputStream(new FileInputStream(Fname));
         } catch (IOException ioException) {
             System.err.println("Error opening file.");
         }
@@ -33,10 +33,14 @@ public class ReadRecord {
          * to read a Ex_3.MusicRecord object from a binary file that contains several
          * records. Loop should terminate when an EOFException is thrown.
          */
-        while (true) {
+        try{
+            while (true) {
+        }
+        
             Object thisObj = null;
             try {
                 thisObj = input.readObject();
+
             } catch (EOFException e) {
                 break;
             } catch (ClassNotFoundException e) {
