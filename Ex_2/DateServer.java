@@ -9,6 +9,12 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Simple server listening for clients on port 8099, sends the current date or time to the client
+ * @author: Davis Allan & Mike Lasby
+ * @since: 2020-11-01
+ * @version: 1.0
+ */
 public class DateServer {
 	private BufferedReader socketInput;
 	private PrintWriter socketOutput;

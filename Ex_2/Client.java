@@ -6,12 +6,26 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Simple client to prompt user to enter DATE or TIME and get the current
+ * date or time from the server
+ *
+ * @author: Davis Allan and Mike Lasby
+ * @since: Nov. 1, 2020
+ * @version: 1.0
+ */
+
 public class Client {
     private PrintWriter socketOut;
     private Socket dateSocket;
     private BufferedReader stdIn;
     private BufferedReader socketIn;
 
+    /**
+     * Creates a Client object and instantiates all of its member variables from the provided arguments
+     * @param serverName the name of the server
+     * @param portNumber the port for the server
+     */
     public Client (String serverName, int portNumber) {
         try {
             dateSocket = new Socket(serverName, portNumber);
@@ -23,6 +37,9 @@ public class Client {
         }
     }
 
+    /**
+     * Prompts the user for input, sends input to the server, and prints out the response
+     */
     public void communicate() {
         String line = "";
         String response = "";
