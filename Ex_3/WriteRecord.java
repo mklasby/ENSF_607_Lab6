@@ -94,11 +94,12 @@ public class WriteRecord {
 			double price = Double.parseDouble(textFileIn.nextLine());
 			System.out.println(price + "  "); // echo data read from text file
 
-			record = new MusicRecord(year, songName, singerName, price);
+			setRecord(year, songName, singerName, price);
 			textFileIn.nextLine(); // read the dashed lines and do nothing
 
 			try {
 				this.objectOut.writeObject(this.record);
+				objectOut.reset();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

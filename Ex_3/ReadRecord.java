@@ -55,6 +55,6 @@ public class ReadRecord {
 
     public static void main(String[] args) {
         ReadRecord d = new ReadRecord();
-        d.readObjectsFromFile("Ex_3/mySongs.ser");
+        d.readObjectsFromFile("Ex_3/allSongs.ser");
     }
 }
