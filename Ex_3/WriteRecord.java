@@ -1,15 +1,12 @@
+package Ex_3;
 /**
  * Started by M. Moussavi
  * March 2015
  * Completed by: STUDENT(S) NAME
  */
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class WriteRecord {
@@ -20,7 +17,7 @@ public class WriteRecord {
 	Scanner textFileIn = null;
 
 	/**
-	 * Creates an blank MusicRecord object
+	 * Creates an blank Ex_3.MusicRecord object
 	 */
 	public WriteRecord() {
 		record = new MusicRecord();
@@ -61,7 +58,7 @@ public class WriteRecord {
 	}
 	
 	/**
-	 * Reads records from given text file, fills the blank MusicRecord
+	 * Reads records from given text file, fills the blank Ex_3.MusicRecord
 	 * created by the constructor with the existing data in the text
 	 * file and serializes each record object into a binary file
 	 */
@@ -94,7 +91,7 @@ public class WriteRecord {
         
 		WriteRecord d = new WriteRecord();
         
-		String textFileName = "someSongs.txt"; // Name of a text file that contains
+		String textFileName = "Ex_3/someSongs.txt"; // Name of a text file that contains
                                                // song records
         
 		String objectFileName = "mySongs.ser"; // Name of the binary file to

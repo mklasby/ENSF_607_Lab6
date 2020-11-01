@@ -1,4 +1,4 @@
-package inlab2;
+package Ex_2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class DateServer {
 	}
 
 	/**
-	 * Get input from Client.
+	 * Get input from Ex_1.Client.
 	 * 
 	 * @throws IOException
 	 */

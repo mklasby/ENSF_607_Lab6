@@ -1,10 +1,9 @@
-/** 
+package Ex_3; /**
  * Started by M. Moussavi
  * March 2015
  * Completed by: STUDENT(S) NAME
  */
 
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -31,22 +30,22 @@ public class ReadRecord {
         }
         
         /* The following loop is supposed to use readObject method of
-         * ObjectInputSteam to read a MusicRecord object from a binary file that
+         * ObjectInputSteam to read a Ex_3.MusicRecord object from a binary file that
          * contains several reords.
          * Loop should terminate when an EOFException is thrown.
          */
-        
-        try
-        {
-            while ( true )
-            {
-                
-                
-                // TO BE COMPLETED BY THE STUDENTS
-                
-           
-            }   // END OF WHILE
-        }
+//
+//        try
+//        {
+//            while ( true )
+//            {
+//
+//
+//                // TO BE COMPLETED BY THE STUDENTS
+//
+//
+//            }   // END OF WHILE
+//        }
                 // ADD NECESSARY catch CLAUSES HERE
 
     }           // END OF METHOD 

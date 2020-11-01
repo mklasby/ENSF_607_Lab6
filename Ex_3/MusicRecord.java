@@ -1,3 +1,4 @@
+package Ex_3;
 
 /**
  *   A simple class that represents a music record
