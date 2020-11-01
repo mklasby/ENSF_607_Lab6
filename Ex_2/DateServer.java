@@ -44,7 +44,7 @@ public class DateServer {
 				}
 				if (line.toString().equals("DATE")) {
 					Calendar cal = Calendar.getInstance();
-					SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					socketOutput.println( sdf.format(cal.getTime()));
 				} else if (line.toString().equals("TIME")) {
 					Calendar cal = Calendar.getInstance();
