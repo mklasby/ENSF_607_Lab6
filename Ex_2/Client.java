@@ -24,24 +24,22 @@ public class Client {
     }
 
     public void communicate() {
-        String line;
+        String line = "";
         String response = "";
 
-        while (true) {
+        while (!line.equals("QUIT")) {
             try {
                 System.out.println("Please select an option (DATE/TIME):");
                 line = stdIn.readLine();
-                if (line.equals("QUIT") || line == null){
+
+                socketOut.println(line);
+                response = socketIn.readLine();
+                if (response == null) {
+                    System.out.println("Good Bye!");
                     break;
                 }
-                if (line.equals("DATE") || line.equals("TIME")) {
-                    socketOut.println(line);
-                    response = socketIn.readLine();
-                    System.out.println(response);
-                }
-                else {
-                    System.out.println("Wrong input, please try again:");
-                }
+                System.out.println(response);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
