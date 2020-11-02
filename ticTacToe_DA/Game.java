@@ -12,7 +12,15 @@ import java.io.*;
  * @version 1.0
  * @since Sept 30 2020
  */
-public class Game implements Constants {
+public class Game implements Constants, Runnable {
+	private ObjectOutputStream xSocketOut;
+	private ObjectInputStream xSocketIn;
+	private ObjectOutputStream oSocketOut;
+	private ObjectInputStream oSocketIn;
+	private BufferedReader xMessageIn;
+	private BufferedReader oMessageIn;
+	private PrintWriter xMessageOut;
+	private PrintWriter oMessageOut;
 	/**
 	 * Board object representing the 3x3 tic-tac-toe grid
 	 */
@@ -26,8 +34,19 @@ public class Game implements Constants {
 	/**
 	 * Constructs a new Game object and constructs a new Board for the game to be played on
 	 */
-    public Game( ) {
-        theBoard  = new Board();
+    public Game(ObjectInputStream xSocketIn, ObjectOutputStream xSocketOut, BufferedReader xMessageIn, PrintWriter xMessageOut,
+				ObjectInputStream oSocketIn, ObjectOutputStream oSocketOut, BufferedReader oMessageIn, PrintWriter oMessageOut) {
+        this.xSocketIn = xSocketIn;
+        this.xSocketOut = xSocketOut;
+        this.xMessageIn = xMessageIn;
+        this.xMessageOut = xMessageOut;
+
+        this.oSocketIn = oSocketIn;
+        this.oSocketOut = oSocketOut;
+        this.oMessageIn = oMessageIn;
+        this.oMessageOut = oMessageOut;
+
+    	theBoard  = new Board();
 	}
 
 	/**
@@ -45,7 +64,7 @@ public class Game implements Constants {
     	Referee theRef;
 		Player xPlayer, oPlayer;
 		BufferedReader stdin;
-		Game theGame = new Game();
+//		Game theGame = new Game();
 
 		stdin = new BufferedReader(new InputStreamReader(System.in));
 		//prompting user for the first player's name, ensures user enters a valid string
@@ -57,7 +76,7 @@ public class Game implements Constants {
 		}
 		//setting up the first player
 		xPlayer = new Player(name, LETTER_X);
-		xPlayer.setBoard(theGame.theBoard);
+//		xPlayer.setBoard(theGame.theBoard);
 
 		//prompting user for the second player's name, ensures user enters a valid string
 		System.out.print("\nPlease enter the name of the \'O\' player: ");
@@ -68,16 +87,32 @@ public class Game implements Constants {
 		}
 		//setting up the second player
 		oPlayer = new Player(name, LETTER_O);
-		oPlayer.setBoard(theGame.theBoard);
+//		oPlayer.setBoard(theGame.theBoard);
 
 		//setting up the referee and beginning the game
 		theRef = new Referee();
-		theRef.setBoard(theGame.theBoard);
+//		theRef.setBoard(theGame.theBoard);
 		theRef.setoPlayer(oPlayer);
 		theRef.setxPlayer(xPlayer);
         
-        theGame.appointReferee(theRef);
+//        theGame.appointReferee(theRef);
 	}
-	
 
+
+	@Override
+	public void run() {
+		Referee theRef = new Referee();
+		while (true) {
+			try {
+				xMessageOut.println("Welcome to the game, you are the 'X' player, please enter your name: ");
+				String name1 = xMessageIn.readLine();
+				oMessageOut.println("Welcome to the game, you are the 'O' player, please enter your name: ");
+				String name2 = oMessageIn.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+
+	}
 }

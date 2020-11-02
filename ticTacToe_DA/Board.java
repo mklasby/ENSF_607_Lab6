@@ -2,6 +2,8 @@ package ticTacToe_DA;
 
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
 
+import java.io.Serializable;
+
 /**
  * Represents a tic-tac-toe board and provides methods for playing the game.
  *
@@ -9,7 +11,7 @@ package ticTacToe_DA;
  * @version 1.0
  * @since Sept 20 2020
  */
-public class Board implements Constants {
+public class Board implements Constants, Serializable {
 	/**
 	 * 2D character array representing the 3x3 grid where X's and O's will be played
 	 */

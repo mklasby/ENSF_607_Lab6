@@ -1,9 +1,6 @@
 package ticTacToe_DA;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -13,20 +10,25 @@ import java.net.Socket;
  * @since Nov. 1, 2020
  * @version 1.0
  */
+
 public class Client {
-    private PrintWriter socketOut;
-    private Socket palinSocket;
+    private Socket gameSocket;
+    private ObjectInputStream objectIn;
+    private ObjectOutputStream objectOut;
+    private PrintWriter messageOut;
+    private BufferedReader messageIn;
     private BufferedReader stdIn;
-    private BufferedReader socketIn;
 
     public Client(String serverName, int portNumber) {
         try {
-            palinSocket = new Socket(serverName, portNumber);
+            gameSocket = new Socket(serverName, portNumber);
+            objectIn = new ObjectInputStream(gameSocket.getInputStream());
+            objectOut = new ObjectOutputStream(gameSocket.getOutputStream());
+            messageIn = new BufferedReader(new InputStreamReader(gameSocket.getInputStream()));
+            messageOut = new PrintWriter(new OutputStreamWriter(gameSocket.getOutputStream()), true);
             stdIn = new BufferedReader(new InputStreamReader(System.in));
-            socketIn = new BufferedReader(new InputStreamReader(palinSocket.getInputStream()));
-            socketOut = new PrintWriter((palinSocket.getOutputStream()), true);
         } catch (IOException e) {
-            System.err.println(e.getStackTrace());
+            e.getStackTrace();
         }
     }
 
@@ -39,25 +41,18 @@ public class Client {
         boolean running = true;
         while (running) {
             try {
-                System.out.println("please enter a word: ");
+                response = messageIn.readLine();
+                System.out.println(response);
                 line = stdIn.readLine();
-                if (!line.equals("QUIT")) {
-                    System.out.println(line);
-                    socketOut.println(line);
-                    response = socketIn.readLine();
-                    System.out.println(response);
-                } else {
-                    running = false;
-                }
-
+                messageOut.println(line);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());
             }
         }
         try {
             stdIn.close();
-            socketIn.close();
-            socketOut.close();
+            objectIn.close();
+            objectOut.close();
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }

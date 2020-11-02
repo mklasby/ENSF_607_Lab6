@@ -1,9 +1,6 @@
 package ticTacToe_DA;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -17,10 +14,17 @@ import java.util.concurrent.Executors;
  */
 public class Server {
 
-    private Socket aSocket;
+    private Socket xPlayer;
+    private Socket oPlayer;
     private ServerSocket serverSocket;
-    private PrintWriter socketOut;
-    private BufferedReader socketIn;
+    private ObjectInputStream xInput;
+    private ObjectOutputStream xOutput;
+    private ObjectInputStream oInput;
+    private ObjectOutputStream oOutput;
+    private BufferedReader xMessageIn;
+    private BufferedReader oMessageIn;
+    private PrintWriter xMessageOut;
+    private PrintWriter oMessageOut;
 
     private ExecutorService pool;
 
@@ -31,7 +35,6 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -41,12 +44,26 @@ public class Server {
     public void runServer() {
         try {
             while (true) {
-                aSocket = serverSocket.accept();
-                System.out.println("Console at Server side says: Connection accepted by the server!");
-                socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
-                socketOut = new PrintWriter(aSocket.getOutputStream(), true);
-//                Palindrome pal = new Palindrome(socketOut, socketIn);
-//                pool.execute(pal);
+                System.out.println("Server is running...");
+                xPlayer = serverSocket.accept();
+                System.out.println("1 player has connected...");
+                oPlayer = serverSocket.accept();
+                System.out.println("2 players have connected, beginning a new game...");
+
+                xOutput = new ObjectOutputStream(xPlayer.getOutputStream());
+                xInput = new ObjectInputStream(xPlayer.getInputStream());
+
+                oOutput = new ObjectOutputStream(oPlayer.getOutputStream());
+                oInput = new ObjectInputStream(oPlayer.getInputStream());
+
+                xMessageIn = new BufferedReader(new InputStreamReader(xPlayer.getInputStream()));
+                xMessageOut = new PrintWriter(new OutputStreamWriter(xPlayer.getOutputStream()), true);
+
+                oMessageIn = new BufferedReader(new InputStreamReader(oPlayer.getInputStream()));
+                oMessageOut = new PrintWriter(new OutputStreamWriter(oPlayer.getOutputStream()), true);
+
+                Game game = new Game(xInput, xOutput, xMessageIn, xMessageOut, oInput, oOutput, oMessageIn, oMessageOut);
+                pool.execute(game);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -54,8 +71,10 @@ public class Server {
         }
         pool.shutdown();
         try {
-            socketIn.close();
-            socketOut.close();
+            xInput.close();
+            xOutput.close();
+            oInput.close();
+            oOutput.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
