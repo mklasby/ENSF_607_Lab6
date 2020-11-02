@@ -12,9 +12,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class HumanPlayer extends Player {
+    Client myClient;
 
-    public HumanPlayer(String name, char mark) {
-        super(name, mark);
+    public HumanPlayer(String name, char mark, Client myClient) {
+        super(name, mark, myClient);
     }
 
     /**
