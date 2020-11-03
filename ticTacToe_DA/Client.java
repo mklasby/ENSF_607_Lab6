@@ -47,7 +47,7 @@ public class Client {
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());
             } catch (NullPointerException e) {
-                System.out.println("Connection closed, good bye!");
+                System.out.println("Connection closed, thanks for playing!");
                 break;
             }
         }
