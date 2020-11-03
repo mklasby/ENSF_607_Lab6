@@ -10,9 +10,9 @@ public class ServerClient {
     private Socket player;
 
     public ServerClient(Socket player) throws IOException {
+        setPlayer(player);
         setMessageIn(new BufferedReader(new InputStreamReader(player.getInputStream())));
         setMessageOut(new PrintWriter(new OutputStreamWriter(player.getOutputStream()), true));
-        setPlayer(player);
     }
 
     public String getMessage () throws IOException {

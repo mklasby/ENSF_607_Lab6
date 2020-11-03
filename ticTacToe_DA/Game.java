@@ -99,18 +99,18 @@ public class Game implements Constants, Runnable {
 		try {
 			xClient.sendMessage("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
 			oClient.sendMessage("Message: Welcome to the game, you are the 'O' player, please enter your name: ");
-			String name1 = xClient.getMessage();
-			xPlayer = new Player(name1, LETTER_X);
-			xPlayer.setBoard(this.theBoard);
-			xClient.sendMessage("Message: Waiting for opponent to connect...");
-			String name2 = oClient.getMessage();
-			oPlayer = new Player(name2, LETTER_O);
-			oPlayer.setBoard(this.theBoard);
-
-			theRef.setBoard(this.theBoard);
-			theRef.setxPlayer(xPlayer);
-			theRef.setoPlayer(oPlayer);
-			this.appointReferee(theRef);
+//			String name1 = xClient.getMessage();
+//			xPlayer = new Player(name1, LETTER_X);
+//			xPlayer.setBoard(this.theBoard);
+//			xClient.sendMessage("Message: Waiting for opponent to connect...");
+//			String name2 = oClient.getMessage();
+//			oPlayer = new Player(name2, LETTER_O);
+//			oPlayer.setBoard(this.theBoard);
+//
+//			theRef.setBoard(this.theBoard);
+//			theRef.setxPlayer(xPlayer);
+//			theRef.setoPlayer(oPlayer);
+//			this.appointReferee(theRef);
 
 		} catch (IOException e) {
 			e.printStackTrace();
