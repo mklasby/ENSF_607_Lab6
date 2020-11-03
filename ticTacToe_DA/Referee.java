@@ -7,27 +7,10 @@ import java.io.IOException;
  * beginning the first turn of the game.
  */
 public class Referee {
-    /**
-     * The player who will be using X's during the game
-     */
+
     private Player xPlayer;
-
-    /**
-     * The player who will be using O's during the game
-     */
     private Player oPlayer;
-
-    /**
-     * Board object representing the 3x3 tic-tac-toe grid
-     */
     private Board board;
-
-    /**
-     * Default constructor for the Referee object
-     */
-    public Referee() {
-
-    }
 
     /**
      * Setter method for the Board member variable

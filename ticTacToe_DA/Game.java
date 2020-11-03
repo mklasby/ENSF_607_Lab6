@@ -17,20 +17,9 @@ public class Game implements Constants, Runnable {
 
 	private ServerClient xClient;
 	private ServerClient oClient;
-
-	/**
-	 * Board object representing the 3x3 tic-tac-toe grid
-	 */
 	private Board theBoard;
-
-	/**
-	 * The referee for the game
-	 */
 	private Referee theRef;
 
-	/**
-	 * Constructs a new Game object and constructs a new Board for the game to be played on
-	 */
     public Game(Socket xPlayer, Socket oPlayer) {
 		try {
 			this.xClient = new ServerClient(xPlayer);
@@ -72,20 +61,22 @@ public class Game implements Constants, Runnable {
 			oClient.sendMessage("INPUT");
 
 			String name1 = xClient.getMessage();
-			xPlayer = new Player(name1, LETTER_X);
+			xPlayer = new Player(name1, LETTER_X, xClient);
 			xPlayer.setBoard(this.theBoard);
 
 			String name2 = oClient.getMessage();
-			oPlayer = new Player(name2, LETTER_O);
+			oPlayer = new Player(name2, LETTER_O, oClient);
 			oPlayer.setBoard(this.theBoard);
 
 			theRef.setBoard(this.theBoard);
 			theRef.setxPlayer(xPlayer);
 			theRef.setoPlayer(oPlayer);
 			announcement("Referee has started the game...");
-
 			this.appointReferee(theRef);
 
+			announcement("Game over, closing connections, good bye!!");
+			xClient.closeConnections();
+			oClient.closeConnections();
 
 		} catch (IOException e) {
 			e.printStackTrace();

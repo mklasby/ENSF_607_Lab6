@@ -46,10 +46,16 @@ public class Client {
                 System.out.println(response);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());
+            } catch (NullPointerException e) {
+                System.out.println("Connection closed, good bye!");
+                break;
             }
         }
         try {
             stdIn.close();
+            messageOut.close();
+            messageIn.close();
+            gameSocket.close();
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }
