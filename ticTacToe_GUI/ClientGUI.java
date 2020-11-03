@@ -39,22 +39,18 @@ public class ClientGUI {
      * Prompts user for input and writes response from Palindrome to stdout.
      */
     public void communicate() {
-        String line = "";
         String response = "";
-        boolean running = true;
-        while (running) {
+
+        String mark = null;
+        try {
+            mark = messageIn.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gui.getPlayerField().setText(mark);
+        while (true) {
             try {
                 response = messageIn.readLine();
-                // if (response.equals("NAME")) {
-                // line = stdIn.readLine();
-                // messageOut.println(line);
-                // continue;
-                // }
-                // if (response.equals("INPUT")) {
-                // line = stdIn.readLine();
-                // messageOut.println(line);
-                // continue;
-                // }
                 gui.getMessageBox().setText(response);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());

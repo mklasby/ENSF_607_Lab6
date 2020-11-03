@@ -57,10 +57,10 @@ public class Game implements Constants, Runnable {
 		Player xPlayer, oPlayer;
 
 		try {
+			xClient.sendMessage("X");
+			oClient.sendMessage("O");
 			xClient.sendMessage("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
-			xClient.sendMessage("INPUT");
 			oClient.sendMessage("Message: Welcome to the game! You are the 'O' player, please enter your name: ");
-			oClient.sendMessage("INPUT");
 
 			String name1 = xClient.getMessage();
 			xPlayer = new Player(name1, LETTER_X, xClient);

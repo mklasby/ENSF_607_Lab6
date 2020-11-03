@@ -83,7 +83,7 @@ public class Player {
      * @throws IOException if an I/O error occurs
      */
     public void makeAMove() throws IOException {
-
+        //TODO: fix the i/o stuff
         int row, col;
 
         // Outer loop to verify that the move chosen by the player is in an open space
