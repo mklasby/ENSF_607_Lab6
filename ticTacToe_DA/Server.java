@@ -50,19 +50,20 @@ public class Server {
                 oPlayer = serverSocket.accept();
                 System.out.println("2 players have connected, beginning a new game...");
 
-                xOutput = new ObjectOutputStream(xPlayer.getOutputStream());
-                xInput = new ObjectInputStream(xPlayer.getInputStream());
 
-                oOutput = new ObjectOutputStream(oPlayer.getOutputStream());
-                oInput = new ObjectInputStream(oPlayer.getInputStream());
+//                xOutput = new ObjectOutputStream(xPlayer.getOutputStream());
+//                xInput = new ObjectInputStream(xPlayer.getInputStream());
+//
+//                oOutput = new ObjectOutputStream(oPlayer.getOutputStream());
+//                oInput = new ObjectInputStream(oPlayer.getInputStream());
+//
+//                xMessageIn = new BufferedReader(new InputStreamReader(xPlayer.getInputStream()));
+//                xMessageOut = new PrintWriter(new OutputStreamWriter(xPlayer.getOutputStream()), true);
+//
+//                oMessageIn = new BufferedReader(new InputStreamReader(oPlayer.getInputStream()));
+//                oMessageOut = new PrintWriter(new OutputStreamWriter(oPlayer.getOutputStream()), true);
 
-                xMessageIn = new BufferedReader(new InputStreamReader(xPlayer.getInputStream()));
-                xMessageOut = new PrintWriter(new OutputStreamWriter(xPlayer.getOutputStream()), true);
-
-                oMessageIn = new BufferedReader(new InputStreamReader(oPlayer.getInputStream()));
-                oMessageOut = new PrintWriter(new OutputStreamWriter(oPlayer.getOutputStream()), true);
-
-                Game game = new Game(xInput, xOutput, xMessageIn, xMessageOut, oInput, oOutput, oMessageIn, oMessageOut);
+                Game game = new Game(xPlayer, oPlayer);
                 pool.execute(game);
             }
         } catch (IOException e) {

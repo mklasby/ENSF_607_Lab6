@@ -1,6 +1,7 @@
 package ticTacToe_DA;
 
 import java.io.*;
+import java.net.Socket;
 
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
 
@@ -13,14 +14,10 @@ import java.io.*;
  * @since Sept 30 2020
  */
 public class Game implements Constants, Runnable {
-	private ObjectOutputStream xSocketOut;
-	private ObjectInputStream xSocketIn;
-	private ObjectOutputStream oSocketOut;
-	private ObjectInputStream oSocketIn;
-	private BufferedReader xMessageIn;
-	private BufferedReader oMessageIn;
-	private PrintWriter xMessageOut;
-	private PrintWriter oMessageOut;
+
+	private ServerClient xClient;
+	private ServerClient oClient;
+
 	/**
 	 * Board object representing the 3x3 tic-tac-toe grid
 	 */
@@ -34,19 +31,14 @@ public class Game implements Constants, Runnable {
 	/**
 	 * Constructs a new Game object and constructs a new Board for the game to be played on
 	 */
-    public Game(ObjectInputStream xSocketIn, ObjectOutputStream xSocketOut, BufferedReader xMessageIn, PrintWriter xMessageOut,
-				ObjectInputStream oSocketIn, ObjectOutputStream oSocketOut, BufferedReader oMessageIn, PrintWriter oMessageOut) {
-        this.xSocketIn = xSocketIn;
-        this.xSocketOut = xSocketOut;
-        this.xMessageIn = xMessageIn;
-        this.xMessageOut = xMessageOut;
-
-        this.oSocketIn = oSocketIn;
-        this.oSocketOut = oSocketOut;
-        this.oMessageIn = oMessageIn;
-        this.oMessageOut = oMessageOut;
-
-    	theBoard  = new Board();
+    public Game(Socket xPlayer, Socket oPlayer) {
+		try {
+			this.xClient = new ServerClient(xPlayer);
+			this.oClient = new ServerClient(oPlayer);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		theBoard  = new Board();
 	}
 
 	/**
@@ -105,13 +97,13 @@ public class Game implements Constants, Runnable {
 		Player xPlayer, oPlayer;
 
 		try {
-			xMessageOut.println("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
-			oMessageOut.println("Message: Welcome to the game, you are the 'O' player, please enter your name: ");
-			String name1 = xMessageIn.readLine();
+			xClient.sendMessage("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
+			oClient.sendMessage("Message: Welcome to the game, you are the 'O' player, please enter your name: ");
+			String name1 = xClient.getMessage();
 			xPlayer = new Player(name1, LETTER_X);
 			xPlayer.setBoard(this.theBoard);
-			xMessageOut.println("Message: Waiting for opponent to connect...");
-			String name2 = oMessageIn.readLine();
+			xClient.sendMessage("Message: Waiting for opponent to connect...");
+			String name2 = oClient.getMessage();
 			oPlayer = new Player(name2, LETTER_O);
 			oPlayer.setBoard(this.theBoard);
 
