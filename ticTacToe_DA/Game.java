@@ -74,7 +74,6 @@ public class Game implements Constants, Runnable {
 			announcement("Referee has started the game...");
 			this.appointReferee(theRef);
 
-			announcement("Game over, closing connections, good bye!!");
 			xClient.closeConnections();
 			oClient.closeConnections();
 

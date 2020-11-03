@@ -55,19 +55,19 @@ public class Player {
             //checks if the player that placed the last mark has a winning condition, if so
             //announce the winner and break out of the loop
             if (board.checkWinner(mark) == 1) {
+                announcement(board.display());
                 announcement("THE GAME IS OVER: " + name + " has won!");
-                announcement("Game ended...");
                 break;
             }
             //checks if the board is full and there are no winning conditions.
             //if true, output a message that it is a tie game and end the game
             else if (board.isFull() && !board.xWins() && !board.oWins()) {
+                announcement(board.display());
                 announcement("Tie game!! Please play again!");
-                announcement("Game ended...");
+                break;
             }
             opponent.play();
         }
-
     }
 
     /**
