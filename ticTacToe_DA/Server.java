@@ -17,14 +17,6 @@ public class Server {
     private Socket xPlayer;
     private Socket oPlayer;
     private ServerSocket serverSocket;
-    private ObjectInputStream xInput;
-    private ObjectOutputStream xOutput;
-    private ObjectInputStream oInput;
-    private ObjectOutputStream oOutput;
-    private BufferedReader xMessageIn;
-    private BufferedReader oMessageIn;
-    private PrintWriter xMessageOut;
-    private PrintWriter oMessageOut;
 
     private ExecutorService pool;
 
@@ -50,19 +42,6 @@ public class Server {
                 oPlayer = serverSocket.accept();
                 System.out.println("2 players have connected, beginning a new game...");
 
-
-//                xOutput = new ObjectOutputStream(xPlayer.getOutputStream());
-//                xInput = new ObjectInputStream(xPlayer.getInputStream());
-//
-//                oOutput = new ObjectOutputStream(oPlayer.getOutputStream());
-//                oInput = new ObjectInputStream(oPlayer.getInputStream());
-//
-//                xMessageIn = new BufferedReader(new InputStreamReader(xPlayer.getInputStream()));
-//                xMessageOut = new PrintWriter(new OutputStreamWriter(xPlayer.getOutputStream()), true);
-//
-//                oMessageIn = new BufferedReader(new InputStreamReader(oPlayer.getInputStream()));
-//                oMessageOut = new PrintWriter(new OutputStreamWriter(oPlayer.getOutputStream()), true);
-
                 Game game = new Game(xPlayer, oPlayer);
                 pool.execute(game);
             }
@@ -72,10 +51,8 @@ public class Server {
         }
         pool.shutdown();
         try {
-            xInput.close();
-            xOutput.close();
-            oInput.close();
-            oOutput.close();
+           xPlayer.close();
+           oPlayer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

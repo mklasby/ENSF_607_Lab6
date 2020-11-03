@@ -38,10 +38,12 @@ public class Client {
         while (running) {
             try {
                 response = messageIn.readLine();
-
+                if (response.equals("INPUT")) {
+                    line = stdIn.readLine();
+                    messageOut.println(line);
+                    continue;
+                }
                 System.out.println(response);
-                line = stdIn.readLine();
-                messageOut.println(line);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());
             }

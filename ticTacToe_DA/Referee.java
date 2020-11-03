@@ -62,8 +62,6 @@ public class Referee {
         xPlayer.setOpponent(oPlayer);
         oPlayer.setOpponent(xPlayer);
 
-        System.out.print("\nReferee has started the game...\n");
-
         board.display();
         xPlayer.play();
     }
