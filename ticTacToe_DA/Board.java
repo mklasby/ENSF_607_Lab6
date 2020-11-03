@@ -12,13 +12,8 @@ import java.io.Serializable;
  * @since Sept 20 2020
  */
 public class Board implements Constants, Serializable {
-	/**
-	 * 2D character array representing the 3x3 grid where X's and O's will be played
-	 */
+
 	private char theBoard[][];
-	/**
-	 * The number of marks currently on the board
-	 */
 	private int markCount;
 
 	/**
@@ -79,20 +74,23 @@ public class Board implements Constants, Serializable {
 	 * Draws the 3x3 grid in its current state with labels for each row and column
 	 * to the terminal
 	 */
-	public void display() {
-		displayColumnHeaders();
-		addHyphens();
+	public String display() {
+		StringBuilder result = new StringBuilder();
+
+		result = displayColumnHeaders(result);
+		result = addHyphens(result);
 		//drawing the rows
 		for (int row = 0; row < 3; row++) {
-			addSpaces();
-			System.out.print("    row " + row + ' ');
+			result = addSpaces(result);
+			result.append("    row ").append(row).append(' ');
 			//drawing the columns
 			for (int col = 0; col < 3; col++)
-				System.out.print("|  " + getMark(row, col) + "  ");
-			System.out.println("|");
-			addSpaces();
-			addHyphens();
+				result.append("|  ").append(getMark(row, col)).append("  ");
+			result.append("|\n");
+			result = addSpaces(result);
+			result = addHyphens(result);
 		}
+		return result.toString();
 	}
 
 	/**
@@ -183,30 +181,33 @@ public class Board implements Constants, Serializable {
 	/**
 	 * Prints the three column headers of the game board
 	 */
-	void displayColumnHeaders() {
-		System.out.print("          ");
+	StringBuilder displayColumnHeaders(StringBuilder sb) {
+		sb.append("          ");
 		for (int j = 0; j < 3; j++)
-			System.out.print("|col " + j);
-		System.out.println();
+			sb.append("|col ").append(j);
+		sb.append("\n");
+		return sb;
 	}
 
 	/**
 	 * Prints a horizontal row of hyphens representing the boundaries in the game board
 	 */
-	void addHyphens() {
-		System.out.print("          ");
+	StringBuilder addHyphens(StringBuilder sb) {
+		sb.append("          ");
 		for (int j = 0; j < 3; j++)
-			System.out.print("+-----");
-		System.out.println("+");
+			sb.append("+-----");
+		sb.append("+\n");
+		return sb;
 	}
 
 	/**
 	 * Prints the vertical lines representing the boundaries in the game board
 	 */
-	void addSpaces() {
-		System.out.print("          ");
+	StringBuilder addSpaces(StringBuilder sb) {
+		sb.append("          ");
 		for (int j = 0; j < 3; j++)
-			System.out.print("|     ");
-		System.out.println("|");
+			sb.append("|     ");
+		sb.append("|\n");
+		return sb;
 	}
 }

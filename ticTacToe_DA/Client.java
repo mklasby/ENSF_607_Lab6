@@ -13,8 +13,6 @@ import java.net.Socket;
 
 public class Client {
     private Socket gameSocket;
-    private ObjectInputStream objectIn;
-    private ObjectOutputStream objectOut;
     private PrintWriter messageOut;
     private BufferedReader messageIn;
     private BufferedReader stdIn;
@@ -22,8 +20,6 @@ public class Client {
     public Client(String serverName, int portNumber) {
         try {
             gameSocket = new Socket(serverName, portNumber);
-            objectIn = new ObjectInputStream(gameSocket.getInputStream());
-            objectOut = new ObjectOutputStream(gameSocket.getOutputStream());
             messageIn = new BufferedReader(new InputStreamReader(gameSocket.getInputStream()));
             messageOut = new PrintWriter(new OutputStreamWriter(gameSocket.getOutputStream()), true);
             stdIn = new BufferedReader(new InputStreamReader(System.in));
@@ -42,17 +38,24 @@ public class Client {
         while (running) {
             try {
                 response = messageIn.readLine();
+                if (response.equals("INPUT")) {
+                    line = stdIn.readLine();
+                    messageOut.println(line);
+                    continue;
+                }
                 System.out.println(response);
-                line = stdIn.readLine();
-                messageOut.println(line);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());
+            } catch (NullPointerException e) {
+                System.out.println("Connection closed, good bye!");
+                break;
             }
         }
         try {
             stdIn.close();
-            objectIn.close();
-            objectOut.close();
+            messageOut.close();
+            messageIn.close();
+            gameSocket.close();
         } catch (IOException e) {
             System.out.println("Closing error: " + e.getMessage());
         }

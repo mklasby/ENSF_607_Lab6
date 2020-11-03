@@ -17,20 +17,9 @@ public class Game implements Constants, Runnable {
 
 	private ServerClient xClient;
 	private ServerClient oClient;
-
-	/**
-	 * Board object representing the 3x3 tic-tac-toe grid
-	 */
 	private Board theBoard;
-
-	/**
-	 * The referee for the game
-	 */
 	private Referee theRef;
 
-	/**
-	 * Constructs a new Game object and constructs a new Board for the game to be played on
-	 */
     public Game(Socket xPlayer, Socket oPlayer) {
 		try {
 			this.xClient = new ServerClient(xPlayer);
@@ -51,45 +40,14 @@ public class Game implements Constants, Runnable {
     	theRef.runTheGame();
     }
 
-
-	public static void main(String[] args) throws IOException {
-    	Referee theRef;
-		Player xPlayer, oPlayer;
-		BufferedReader stdin;
-//		Game theGame = new Game();
-
-		stdin = new BufferedReader(new InputStreamReader(System.in));
-		//prompting user for the first player's name, ensures user enters a valid string
-		System.out.print("\nPlease enter the name of the \'X\' player: ");
-		String name= stdin.readLine();
-		while (name == null) {
-			System.out.print("Please try again: ");
-			name = stdin.readLine();
+    public void announcement(String message) {
+    	try {
+			oClient.sendMessage(message);
+			xClient.sendMessage(message);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		//setting up the first player
-		xPlayer = new Player(name, LETTER_X);
-//		xPlayer.setBoard(theGame.theBoard);
-
-		//prompting user for the second player's name, ensures user enters a valid string
-		System.out.print("\nPlease enter the name of the \'O\' player: ");
-		name = stdin.readLine();
-		while (name == null) {
-			System.out.print("Please try again: ");
-			name = stdin.readLine();
-		}
-		//setting up the second player
-		oPlayer = new Player(name, LETTER_O);
-//		oPlayer.setBoard(theGame.theBoard);
-
-		//setting up the referee and beginning the game
-		theRef = new Referee();
-//		theRef.setBoard(theGame.theBoard);
-		theRef.setoPlayer(oPlayer);
-		theRef.setxPlayer(xPlayer);
-        
-//        theGame.appointReferee(theRef);
 	}
-
 
 	@Override
 	public void run() {
@@ -98,19 +56,27 @@ public class Game implements Constants, Runnable {
 
 		try {
 			xClient.sendMessage("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
-			oClient.sendMessage("Message: Welcome to the game, you are the 'O' player, please enter your name: ");
+			xClient.sendMessage("INPUT");
+			oClient.sendMessage("Message: Welcome to the game! You are the 'O' player, please enter your name: ");
+			oClient.sendMessage("INPUT");
+
 			String name1 = xClient.getMessage();
-			xPlayer = new Player(name1, LETTER_X);
+			xPlayer = new Player(name1, LETTER_X, xClient);
 			xPlayer.setBoard(this.theBoard);
-			xClient.sendMessage("Message: Waiting for opponent to connect...");
+
 			String name2 = oClient.getMessage();
-			oPlayer = new Player(name2, LETTER_O);
+			oPlayer = new Player(name2, LETTER_O, oClient);
 			oPlayer.setBoard(this.theBoard);
 
 			theRef.setBoard(this.theBoard);
 			theRef.setxPlayer(xPlayer);
 			theRef.setoPlayer(oPlayer);
+			announcement("Referee has started the game...");
 			this.appointReferee(theRef);
+
+			announcement("Game over, closing connections, good bye!!");
+			xClient.closeConnections();
+			oClient.closeConnections();
 
 		} catch (IOException e) {
 			e.printStackTrace();
