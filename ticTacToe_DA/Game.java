@@ -102,17 +102,26 @@ public class Game implements Constants, Runnable {
 	@Override
 	public void run() {
 		Referee theRef = new Referee();
-		while (true) {
-			try {
-				xMessageOut.println("Welcome to the game, you are the 'X' player, please enter your name: ");
-				String name1 = xMessageIn.readLine();
-				oMessageOut.println("Welcome to the game, you are the 'O' player, please enter your name: ");
-				String name2 = oMessageIn.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		Player xPlayer, oPlayer;
+
+		try {
+			xMessageOut.println("Message: Welcome to the game! You are the 'X' player, please enter your name: ");
+			oMessageOut.println("Message: Welcome to the game, you are the 'O' player, please enter your name: ");
+			String name1 = xMessageIn.readLine();
+			xPlayer = new Player(name1, LETTER_X);
+			xPlayer.setBoard(this.theBoard);
+			xMessageOut.println("Message: Waiting for opponent to connect...");
+			String name2 = oMessageIn.readLine();
+			oPlayer = new Player(name2, LETTER_O);
+			oPlayer.setBoard(this.theBoard);
+
+			theRef.setBoard(this.theBoard);
+			theRef.setxPlayer(xPlayer);
+			theRef.setoPlayer(oPlayer);
+			this.appointReferee(theRef);
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
-
 	}
 }
