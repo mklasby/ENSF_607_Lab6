@@ -1,7 +1,9 @@
 package ticTacToe_GUI;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,10 +25,14 @@ public class ClientGUI {
 
     public ClientGUI(String serverName, int portNumber) {
         try {
+            // TODO: Comment me out to run local
+            InetAddress serverIP = InetAddress.getByName(serverName);
             gui = new TicTacToeGUI();
             gui.addButtonListener(new buttonListener());
             gui.addNameListener(new nameListener());
-            gameSocket = new Socket(serverName, portNumber);
+            gameSocket = new Socket(serverIP, portNumber);
+            // TODO: Un comment to run local
+            // gameSocket = new Socket(serverName, portNumber);
             messageIn = new BufferedReader(new InputStreamReader(gameSocket.getInputStream()));
             messageOut = new PrintWriter(new OutputStreamWriter(gameSocket.getOutputStream()), true);
             stdIn = new BufferedReader(new InputStreamReader(System.in));
@@ -79,7 +85,10 @@ public class ClientGUI {
     }
 
     public static void main(String[] args) throws IOException {
-        ClientGUI aClient = new ClientGUI("localhost", 8099);
+        // TODO: Un Comment me to run local
+        // ClientGUI aClient = new ClientGUI("localhost", 8099);
+        // TODO: Comment me out to run local
+        ClientGUI aClient = new ClientGUI("68.147.166.141", 8099);
         aClient.communicate();
     }
 
