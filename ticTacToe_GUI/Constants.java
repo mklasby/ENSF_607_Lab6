@@ -11,7 +11,7 @@ public interface Constants {
 	/**
 	 * constant for the space character {@value}
 	 */
-	static final char SPACE_CHAR = ' ';
+	static final char SPACE_CHAR = '_';
 
 	/**
 	 * constant for the O character {@value}

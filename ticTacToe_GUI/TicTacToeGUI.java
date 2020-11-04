@@ -87,7 +87,7 @@ public class TicTacToeGUI extends JFrame implements Constants {
     }
 
     public void updateBoard(String response) {
-        String[] responses = response.split("$");
+        String[] responses = response.split("%");
         for (int i = 0; i < 8; i++) {
             buttons.get(i).setText(responses[i]);
         }
