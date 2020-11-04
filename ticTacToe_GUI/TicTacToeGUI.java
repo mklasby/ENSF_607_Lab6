@@ -22,7 +22,7 @@ public class TicTacToeGUI extends JFrame implements Constants {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Mapping index 0,1,2 to row,col (0,0), (0,1), (0,2)...
         JPanel mainPanel = new JPanel();
-
+        mainPanel.setSize(100, 250);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 3));
 

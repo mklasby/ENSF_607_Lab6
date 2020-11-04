@@ -51,7 +51,10 @@ public class ClientGUI {
         while (true) {
             try {
                 response = messageIn.readLine();
-                if (response != null && response.equals("BOARD")) {
+                if (response == null) {
+                    continue;
+                }
+                if (response.equals("BOARD")) {
                     response = messageIn.readLine();
                     gui.updateBoard(response);
                     continue;

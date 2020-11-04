@@ -1,5 +1,6 @@
 package ticTacToe_GUI;
 
+
 import java.io.IOException;
 
 /**
@@ -16,7 +17,7 @@ public class Player {
 
     /**
      * Constructs a player object with the specified values for name and mark.
-     * 
+     *
      * @param name the name of the Player
      * @param mark the mark that the player will play the game with. Either X or O
      */
@@ -28,7 +29,7 @@ public class Player {
 
     /**
      * Setter method for the Board member variable
-     * 
+     *
      * @param board the board that the game will be played on
      */
     public void setBoard(Board board) {
@@ -37,7 +38,7 @@ public class Player {
 
     /**
      * Setter method for the Player's opponent
-     * 
+     *
      * @param opponent the Player that is playing against this Player
      */
     public void setOpponent(Player opponent) {
@@ -48,7 +49,7 @@ public class Player {
      * Controls the flow of gameplay and checks if the either player has won, or if
      * the game has ended in a Tie. Method will also announce the winner if a
      * winning condition is reached
-     * 
+     *
      * @throws IOException if an I/O error occurs
      */
     public void play() throws IOException {
@@ -82,7 +83,7 @@ public class Player {
      * Prompts the user for the row and column for where they wish to place their
      * mark on the board. Ensures user input is valid and will re-prompt in the
      * event the Player requests and invalid move
-     * 
+     *
      * @throws IOException if an I/O error occurs
      */
     public void makeAMove() throws IOException {
@@ -92,52 +93,19 @@ public class Player {
         while (true) {
             // Loop to validate that the user enters an integer of 0, 1, or 2 for the row.
             // Catches exceptions if they enter anything other than an integer
-            while (true) {
-                try {
-                    myClient.sendMessage(name + ", what row should your next " + mark + " be placed in? ");
-                    row = Integer.parseInt(myClient.getMessage());
+            myClient.sendMessage(name + ", what space should your next " + mark + " be placed in? ");
+            row = Integer.parseInt(myClient.getMessage());
+            col = Integer.parseInt(myClient.getMessage());
 
-                    if (row < 0 || row > 2) {
-                        myClient.sendMessage("Invalid row, please enter 0,1, or 2.");
-                    } else {
-                        break;
-                    }
-                } catch (NumberFormatException e) {
-                    myClient.sendMessage("Invalid input, please enter a valid integer");
-                }
-            }
-
-            // Loop to validate that the user enters an integer of 0, 1, or 2 for the
-            // column.
-            // Catches exceptions if they enter anything other than an integer
-            while (true) {
-                try {
-                    myClient.sendMessage(name + ", what column should your next " + mark + " be placed in? ");
-                    col = Integer.parseInt(myClient.getMessage());
-
-                    if (col < 0 || col > 2) {
-                        myClient.sendMessage("Invalid column, please enter 0,1, or 2");
-                    } else {
-                        break;
-                    }
-                } catch (NumberFormatException e) {
-                    myClient.sendMessage("Invalid input, please enter a valid integer");
-                }
-            }
-
-            // Check if the move is valid, if it is not a valid move, output a message and
-            // prompt
-            // the user for a valid input
             if (board.isValidMove(row, col)) {
                 break;
             } else {
                 myClient.sendMessage("Invalid move, space is already taken! Please try again");
             }
         }
-        // if the code has reached this point then the move is valid and the mark will
-        // be placed on the board
         board.addMark(row, col, mark);
     }
+
 
     public void announcement(String message) {
         try {
