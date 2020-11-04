@@ -1,5 +1,7 @@
 package tictactoe;
 
+import java.io.Serializable;
+
 /**
  * Class to store and display Board state during game play.
  * 
@@ -8,7 +10,8 @@ package tictactoe;
  * @version: 2.0
  */
 
-public class Board implements Constants {
+public class Board implements Constants, Serializable {
+	private static final long serialVersionUID = 11L;
 	private char theBoard[][]; // 2D array depiction of board
 	private int markCount;
 

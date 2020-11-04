@@ -98,6 +98,19 @@ public class Board implements Constants, Serializable {
 		return result.toString();
 	}
 
+	public String sendState() {
+		StringBuilder result = new StringBuilder();
+		for (int row = 0; row < 3; row++) {
+			for (int col = 0; col < 3; col++) {
+				result.append(theBoard[row][col]);
+				result.append("$");
+			}
+		}
+		System.out.print(result);
+
+		return result.toString();
+	}
+
 	/**
 	 * Adds the character mark to the user specified location on the board
 	 * 

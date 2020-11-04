@@ -51,6 +51,11 @@ public class ClientGUI {
         while (true) {
             try {
                 response = messageIn.readLine();
+                if (response != null && response.equals("BOARD")) {
+                    response = messageIn.readLine();
+                    gui.updateBoard(response);
+                    continue;
+                }
                 gui.getMessageBox().setText(response);
             } catch (IOException e) {
                 System.out.println("Sending error: " + e.getMessage());

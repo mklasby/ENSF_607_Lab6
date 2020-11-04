@@ -53,21 +53,24 @@ public class Player {
      */
     public void play() throws IOException {
         while (!board.isFull() && !board.oWins() && !board.xWins()) {
-            announcement(board.display());
+            announcement("BOARD");
+            announcement(board.sendState());
             opponent.myClient.sendMessage("Waiting for opponent to make a move...");
             makeAMove();
             announcement("Good move, here is the board...");
             // checks if the player that placed the last mark has a winning condition, if so
             // announce the winner and break out of the loop
             if (board.checkWinner(mark) == 1) {
-                announcement(board.display());
+                announcement("BOARD");
+                announcement(board.sendState());
                 announcement("THE GAME IS OVER: " + name + " has won!");
                 break;
             }
             // checks if the board is full and there are no winning conditions.
             // if true, output a message that it is a tie game and end the game
             else if (board.isFull() && !board.xWins() && !board.oWins()) {
-                announcement(board.display());
+                announcement("BOARD");
+                announcement(board.sendState());
                 announcement("Tie game!! Please play again!");
                 break;
             }
@@ -83,7 +86,6 @@ public class Player {
      * @throws IOException if an I/O error occurs
      */
     public void makeAMove() throws IOException {
-        //TODO: fix the i/o stuff
         int row, col;
 
         // Outer loop to verify that the move chosen by the player is in an open space
@@ -93,7 +95,6 @@ public class Player {
             while (true) {
                 try {
                     myClient.sendMessage(name + ", what row should your next " + mark + " be placed in? ");
-                    myClient.sendMessage("INPUT");
                     row = Integer.parseInt(myClient.getMessage());
 
                     if (row < 0 || row > 2) {
@@ -112,7 +113,6 @@ public class Player {
             while (true) {
                 try {
                     myClient.sendMessage(name + ", what column should your next " + mark + " be placed in? ");
-                    myClient.sendMessage("INPUT");
                     col = Integer.parseInt(myClient.getMessage());
 
                     if (col < 0 || col > 2) {

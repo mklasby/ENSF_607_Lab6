@@ -49,7 +49,7 @@ public class Referee {
         xPlayer.setOpponent(oPlayer);
         oPlayer.setOpponent(xPlayer);
 
-        board.display();
+        board.sendState();
         xPlayer.play();
     }
 }

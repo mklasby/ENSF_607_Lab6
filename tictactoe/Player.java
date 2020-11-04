@@ -10,27 +10,29 @@ package tictactoe;
 
 import java.io.*;
 
-abstract public class Player {
+public class Player implements Serializable {
+    private static final long serialVersionUID = 12L;
     protected String name;
     protected Board board;
-    protected Player opponent;
     protected char mark;
+    private Player opponent;
 
     public Player(String name, char letter) {
         this.name = name;
         this.mark = letter;
+        setBoard(new Board());
     }
 
     protected void setBoard(Board theBoard) {
         this.board = theBoard;
     }
 
-    protected void setOpponent(Player player) {
-        this.opponent = player;
-    }
-
     protected String getName() {
         return this.name;
+    }
+
+    protected void setOpponent(Player o) {
+        this.opponent = o;
     }
 
     /**
@@ -53,7 +55,6 @@ abstract public class Player {
         } else {
             System.out.printf("%s's move!\n", name);
             makeMove();
-            opponent.play();
         }
     }
 
@@ -61,7 +62,25 @@ abstract public class Player {
      * Method to be implemented in each player subclass based on their respective
      * strategies.
      */
-    abstract protected void makeMove();
+    protected void makeMove() {
+        boolean badMove = true;
+        int row = -1;
+        int col = -1;
+
+        while (badMove) {
+            System.out.print("Please enter the row number: \n");
+            row = getInteger();
+            System.out.print("Please enter the column number:\n");
+            col = getInteger();
+            if (board.addMark(row, col, this.mark)) {
+                badMove = false;
+            }
+        }
+        System.out.printf("Good move, I've added an %c to (%d,%d). Here's the board:\n\n", mark, row, col);
+        board.display();
+        System.out.print("\n\n");
+        System.out.print("Waiting for Opponent's move...\n");
+    }
 
     /**
      * Reports a successful move to CLI.
@@ -73,5 +92,34 @@ abstract public class Player {
         System.out.printf("Good move, I've added an %c to (%d,%d). Here's the board:\n\n", this.mark, row, col);
         board.display();
         System.out.print("\n\n");
+    }
+
+    public Board getBoard() {
+        return this.board;
+    }
+
+    /**
+     * Helper method to make sure that row/col inputs are integers. Will re-prompt
+     * if any other type is inputted.
+     *
+     *
+     * @return int - good integer input
+     */
+    private int getInteger() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+        int value = -1;
+        boolean badInput = true;
+        while (badInput) {
+            try {
+                input = br.readLine();
+                value = Integer.parseInt(input);
+                badInput = false;
+            } catch (Exception e) {
+                System.out.print("ERROR! Bad input, please enter row/column numbers as integers.\nPlease try again: ");
+                continue;
+            }
+        }
+        return value;
     }
 }

@@ -19,8 +19,6 @@ public class Referee {
      * message, displays the board, and then prompts xPlayer to begin.
      */
     public void runTheGame() {
-        xPlayer.setOpponent(oPlayer);
-        oPlayer.setOpponent(xPlayer);
         System.out.printf("Let's begin playing!\n\nHere's the Board:\n");
         board.display();
         xPlayer.play();
