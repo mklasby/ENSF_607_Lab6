@@ -106,8 +106,6 @@ public class Board implements Constants, Serializable {
 				result.append("%");
 			}
 		}
-		System.out.print(result);
-
 		return result.toString();
 	}
 

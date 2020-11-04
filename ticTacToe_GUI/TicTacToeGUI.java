@@ -36,7 +36,10 @@ public class TicTacToeGUI extends JFrame implements Constants {
         mainPanel.add("LINE_START", buttonPanel);
 
         JPanel ioPanel = new JPanel();
-        ioPanel.setLayout(new BoxLayout(ioPanel, BoxLayout.PAGE_AXIS));
+        messageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        name.setAlignmentX(Component.LEFT_ALIGNMENT);
+        playerLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        ioPanel.setLayout(new BoxLayout(ioPanel, BoxLayout.Y_AXIS));
         ioPanel.add(messageLabel);
         messageBox.setLineWrap(true);
         ioPanel.add(messageBox);
@@ -88,7 +91,7 @@ public class TicTacToeGUI extends JFrame implements Constants {
 
     public void updateBoard(String response) {
         String[] responses = response.split("%");
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             buttons.get(i).setText(responses[i]);
         }
     }

@@ -88,15 +88,14 @@ public class Player {
      */
     public void makeAMove() throws IOException {
         int row, col;
-
+        myClient.sendMessage(name + ", what space should your next " + mark + " be placed in? ");
         // Outer loop to verify that the move chosen by the player is in an open space
         while (true) {
             // Loop to validate that the user enters an integer of 0, 1, or 2 for the row.
             // Catches exceptions if they enter anything other than an integer
-            myClient.sendMessage(name + ", what space should your next " + mark + " be placed in? ");
             row = Integer.parseInt(myClient.getMessage());
             col = Integer.parseInt(myClient.getMessage());
-
+            System.out.println("\n" + row + col + " ");
             if (board.isValidMove(row, col)) {
                 break;
             } else {
