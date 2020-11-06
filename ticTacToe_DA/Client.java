@@ -7,16 +7,21 @@ import java.net.Socket;
  * Simple client to prompt user to enter Strings to be check for palindrome
  *
  * @author Davis Allan and Mike Lasby
- * @since Nov. 1, 2020
  * @version 1.0
+ * @since Nov. 1, 2020
  */
-
 public class Client {
     private Socket gameSocket;
     private PrintWriter messageOut;
     private BufferedReader messageIn;
     private BufferedReader stdIn;
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param serverName the server name
+     * @param portNumber the port number
+     */
     public Client(String serverName, int portNumber) {
         try {
             gameSocket = new Socket(serverName, portNumber);
@@ -62,6 +67,12 @@ public class Client {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
     public static void main(String[] args) throws IOException {
         Client aClient = new Client("localhost", 8099);
         aClient.communicate();

@@ -1,14 +1,11 @@
-
-/**
-* Started by M. Moussavi
-* March 2015
-* Completed by: STUDENT(S) NAME
-*/
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+/**
+ * The type Read record.
+ */
 public class ReadRecord {
 
     private ObjectInputStream input;
@@ -50,6 +47,11 @@ public class ReadRecord {
 
     } // END OF METHOD
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         ReadRecord d = new ReadRecord();
         d.readObjectsFromFile("mySongs.ser");

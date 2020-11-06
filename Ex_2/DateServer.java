@@ -11,9 +11,10 @@ import java.util.Calendar;
 
 /**
  * Simple server listening for clients on port 8099, sends the current date or time to the client
- * @author: Davis Allan & Mike Lasby
- * @since: 2020-11-01
- * @version: 1.0
+ *
+ * @author Davis Allan & Mike Lasby
+ * @since 2020 -11-01
+ * @version 1.0
  */
 public class DateServer {
 	private BufferedReader socketInput;
@@ -37,8 +38,8 @@ public class DateServer {
 
 	/**
 	 * Get input from Ex_1.Client.
-	 * 
-	 * @throws IOException
+	 *
+	 * @throws IOException the io exception
 	 */
 	public void getUserInput() throws IOException {
 		StringBuffer line = null;
@@ -68,9 +69,9 @@ public class DateServer {
 
 	/**
 	 * Run the Server.
-	 * 
-	 * @param args
-	 * @throws IOException
+	 *
+	 * @param args the input arguments
+	 * @throws IOException the io exception
 	 */
 	public static void main(String[] args) throws IOException {
 		DateServer ds = new DateServer();

@@ -32,6 +32,7 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Returns the character contained in a specified location on the grid
+	 *
 	 * @param row the row of the board that the cell is contained in
 	 * @param col the column of the board that the cell is contained in
 	 * @return character of either X or O contained in the specified cell
@@ -42,6 +43,7 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Checks if the board is full
+	 *
 	 * @return true if the board is full, false otherwise
 	 */
 	public boolean isFull() {
@@ -50,6 +52,7 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Determines if the player playing X's has won the game
+	 *
 	 * @return true if they are the winner, false otherwise
 	 */
 	public boolean xWins() {
@@ -61,6 +64,7 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Checks if the player playing O's has won the game
+	 *
 	 * @return true if they are the winner, false otherwise
 	 */
 	public boolean oWins() {
@@ -73,6 +77,8 @@ public class Board implements Constants, Serializable {
 	/**
 	 * Draws the 3x3 grid in its current state with labels for each row and column
 	 * to the terminal
+	 *
+	 * @return the string
 	 */
 	public String display() {
 		StringBuilder result = new StringBuilder();
@@ -95,8 +101,9 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Adds the character mark to the user specified location on the board
-	 * @param row the row where the mark is to be inserted
-	 * @param col the column where the mark is to be inserted
+	 *
+	 * @param row  the row where the mark is to be inserted
+	 * @param col  the column where the mark is to be inserted
 	 * @param mark the character to be added to the board
 	 */
 	public void addMark(int row, int col, char mark) {
@@ -107,6 +114,7 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Determines if the location on the board is already occupied by another player
+	 *
 	 * @param row the row to be checked
 	 * @param col the column to be checked
 	 * @return true if there is no mark present in that cell, false otherwise
@@ -117,6 +125,7 @@ public class Board implements Constants, Serializable {
 		}
 		return true;
 	}
+
 	/**
 	 * Clears the board of all previous marks to restart the game and resets the
 	 * mark counter
@@ -131,6 +140,7 @@ public class Board implements Constants, Serializable {
 	/**
 	 * Checks to see if a player has won the game by placing three matching characters to draw a
 	 * horizontal, vertical, or diagonal line
+	 *
 	 * @param mark the mark to be checked for a winning condition
 	 * @return 1 if the mark being checked has a winning condition, 0 if there is no winning condition
 	 */
@@ -180,6 +190,9 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Prints the three column headers of the game board
+	 *
+	 * @param sb the sb
+	 * @return the string builder
 	 */
 	StringBuilder displayColumnHeaders(StringBuilder sb) {
 		sb.append("          ");
@@ -191,6 +204,9 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Prints a horizontal row of hyphens representing the boundaries in the game board
+	 *
+	 * @param sb the sb
+	 * @return the string builder
 	 */
 	StringBuilder addHyphens(StringBuilder sb) {
 		sb.append("          ");
@@ -202,6 +218,9 @@ public class Board implements Constants, Serializable {
 
 	/**
 	 * Prints the vertical lines representing the boundaries in the game board
+	 *
+	 * @param sb the sb
+	 * @return the string builder
 	 */
 	StringBuilder addSpaces(StringBuilder sb) {
 		sb.append("          ");

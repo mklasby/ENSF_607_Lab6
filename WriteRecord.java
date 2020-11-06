@@ -3,23 +3,36 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-/**
- * Writes MusicRecord to file 
- * 
- * @author: M. Moussavi, Davis Allan, Mike Lasby
- * @since: Nov. 1, 2020
- * @version: 1.0
- */
+
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
+/**
+ * Writes MusicRecord to file
+ *
+ * @author M. Moussavi, Davis Allan, Mike Lasby
+ * @since Nov. 1, 2020
+ * @version 1.0
+ */
 public class WriteRecord {
 
+	/**
+	 * The Object out.
+	 */
 	ObjectOutputStream objectOut = null;
+	/**
+	 * The Record.
+	 */
 	MusicRecord record = null;
+	/**
+	 * The Stdin.
+	 */
 	Scanner stdin = null;
+	/**
+	 * The Text file in.
+	 */
 	Scanner textFileIn = null;
 
 	/**
@@ -31,7 +44,7 @@ public class WriteRecord {
 
 	/**
 	 * Initializes the data fields of a record object
-	 * 
+	 *
 	 * @param year       - year that song was purchased
 	 * @param songName   - name of the song
 	 * @param singerName - singer's name
@@ -46,7 +59,7 @@ public class WriteRecord {
 
 	/**
 	 * Opens a file input stream, using the data field textFileIn
-	 * 
+	 *
 	 * @param textFileName name of text file to open
 	 */
 	public void openFileInputStream(String textFileName) {
@@ -60,7 +73,7 @@ public class WriteRecord {
 
 	/**
 	 * Opens an ObjectOutputStream using objectOut data field
-	 * 
+	 *
 	 * @param objectFileName name of the object file to be created
 	 */
 	public void openObjectOutputStream(String objectFileName) {
@@ -110,6 +123,12 @@ public class WriteRecord {
 		textFileIn.close();
 	}
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 * @throws IOException the io exception
+	 */
 	public static void main(String[] args) throws IOException {
 
 		WriteRecord d = new WriteRecord();

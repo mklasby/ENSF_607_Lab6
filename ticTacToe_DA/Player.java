@@ -15,8 +15,10 @@ public class Player {
 
     /**
      * Constructs a player object with the specified values for name and mark.
-     * @param name the name of the Player
-     * @param mark the mark that the player will play the game with. Either X or O
+     *
+     * @param name     the name of the Player
+     * @param mark     the mark that the player will play the game with. Either X or O
+     * @param myClient the my client
      */
     public Player(String name, char mark, ServerClient myClient) {
         this.name = name;
@@ -26,6 +28,7 @@ public class Player {
 
     /**
      * Setter method for the Board member variable
+     *
      * @param board the board that the game will be played on
      */
     public void setBoard(Board board) {
@@ -34,6 +37,7 @@ public class Player {
 
     /**
      * Setter method for the Player's opponent
+     *
      * @param opponent the Player that is playing against this Player
      */
     public void setOpponent(Player opponent) {
@@ -44,6 +48,7 @@ public class Player {
      * Controls the flow of gameplay and checks if the either player has won, or
      * if the game has ended in a Tie. Method will also announce the winner if a winning
      * condition is reached
+     *
      * @throws IOException if an I/O error occurs
      */
     public void play() throws IOException {
@@ -74,6 +79,7 @@ public class Player {
      * Prompts the user for the row and column for where they wish to place their
      * mark on the board. Ensures user input is valid and will re-prompt in the event
      * the Player requests and invalid move
+     *
      * @throws IOException if an I/O error occurs
      */
     public void makeAMove() throws IOException {
@@ -133,6 +139,11 @@ public class Player {
         board.addMark(row, col, mark);
     }
 
+    /**
+     * Announcement.
+     *
+     * @param message the message
+     */
     public void announcement(String message) {
         try {
             myClient.sendMessage(message);

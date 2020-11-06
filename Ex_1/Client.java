@@ -1,12 +1,6 @@
 package Ex_1;
 
-/**
- * Simple client to prompt user to enter Strings to be check for palindrome
- * 
- * @author: Davis Allan and Mike Lasby
- * @since: Nov. 1, 2020
- * @version: 1.0
- */
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,12 +8,25 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Simple client to prompt user to enter Strings to be check for palindrome
+ *
+ * @author Davis Allan and Mike Lasby
+ * @since Nov. 1, 2020
+ * @version 1.0
+ */
 public class Client {
 	private PrintWriter socketOut;
 	private Socket palinSocket;
 	private BufferedReader stdIn;
 	private BufferedReader socketIn;
 
+	/**
+	 * Instantiates a new Client.
+	 *
+	 * @param serverName the server name
+	 * @param portNumber the port number
+	 */
 	public Client(String serverName, int portNumber) {
 		try {
 			palinSocket = new Socket(serverName, portNumber);
@@ -65,6 +72,12 @@ public class Client {
 
 	}
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 * @throws IOException the io exception
+	 */
 	public static void main(String[] args) throws IOException {
 		Client aClient = new Client("localhost", 8099);
 		aClient.communicate();

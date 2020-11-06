@@ -1,12 +1,5 @@
 package Ex_1;
 
-/**
- * Simple server multi listening for clients on port 8099
- * @author: Davis Allan & Mike Lasby
- * @since: 2020-11-01
- * @version: 1.0
- */
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,6 +9,12 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Simple server multi listening for clients on port 8099
+ * @author Davis Allan & Mike Lasby
+ * @since 2020-11-01
+ * @version 1.0
+ */
 public class ServerWithThreadPool {
 
 	private Socket aSocket;
@@ -25,6 +24,9 @@ public class ServerWithThreadPool {
 
 	private ExecutorService pool;
 
+	/**
+	 * Instantiates a new Server with thread pool.
+	 */
 	public ServerWithThreadPool() {
 		try {
 			serverSocket = new ServerSocket(8099);
@@ -64,6 +66,12 @@ public class ServerWithThreadPool {
 
 	}
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 * @throws IOException the io exception
+	 */
 	public static void main(String[] args) throws IOException {
 
 		ServerWithThreadPool myServer = new ServerWithThreadPool();
