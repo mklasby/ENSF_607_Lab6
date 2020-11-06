@@ -14,7 +14,7 @@ public class Referee {
 
     /**
      * Setter method for the Board member variable
-     * 
+     *
      * @param board the board that the game will be played on
      */
     public void setBoard(Board board) {
@@ -23,7 +23,7 @@ public class Referee {
 
     /**
      * Sets the Player who will be using X's during the game
-     * 
+     *
      * @param xPlayer Player that will be using X's as their mark
      */
     public void setxPlayer(Player xPlayer) {
@@ -32,7 +32,7 @@ public class Referee {
 
     /**
      * Sets the Player who will be using O's during the game
-     * 
+     *
      * @param oPlayer Player that will be using O's as their mark
      */
     public void setoPlayer(Player oPlayer) {
@@ -42,7 +42,7 @@ public class Referee {
     /**
      * Sets the two Players as each other's opponents and then begins the first turn
      * of the game
-     * 
+     *
      * @throws IOException if an I/O error occurs
      */
     public void runTheGame() throws IOException {

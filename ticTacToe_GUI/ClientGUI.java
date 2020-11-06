@@ -12,10 +12,9 @@ import java.awt.event.ActionListener;
  * Simple client to prompt user to enter Strings to be check for palindrome
  *
  * @author Davis Allan and Mike Lasby
- * @since Nov. 1, 2020
  * @version 1.0
+ * @since Nov. 1, 2020
  */
-
 public class ClientGUI {
     private Socket gameSocket;
     private PrintWriter messageOut;
@@ -23,6 +22,12 @@ public class ClientGUI {
     private BufferedReader stdIn;
     private TicTacToeGUI gui;
 
+    /**
+     * Instantiates a new Client gui.
+     *
+     * @param serverName the server name
+     * @param portNumber the port number
+     */
     public ClientGUI(String serverName, int portNumber) {
         try {
             // TODO: Comment me out to run local
@@ -84,6 +89,12 @@ public class ClientGUI {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
     public static void main(String[] args) throws IOException {
         // TODO: Un Comment me to run local
         // ClientGUI aClient = new ClientGUI("localhost", 8099);
@@ -92,6 +103,9 @@ public class ClientGUI {
         aClient.communicate();
     }
 
+    /**
+     * The type Name listener.
+     */
     class nameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -100,6 +114,9 @@ public class ClientGUI {
         }
     }
 
+    /**
+     * The type Button listener.
+     */
     class buttonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {

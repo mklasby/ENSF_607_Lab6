@@ -8,10 +8,10 @@ import java.util.concurrent.Executors;
 
 /**
  * Simple server multi listening for clients on port 8099
- * 
+ *
  * @author Davis Allan & Mike Lasby
- * @since 2020-11-01
  * @version 1.0
+ * @since 2020 -11-01
  */
 public class Server {
 
@@ -21,6 +21,9 @@ public class Server {
 
     private ExecutorService pool;
 
+    /**
+     * Instantiates a new Server.
+     */
     public Server() {
         try {
             serverSocket = new ServerSocket(8099);
@@ -61,6 +64,12 @@ public class Server {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
     public static void main(String[] args) throws IOException {
 
         Server myServer = new Server();

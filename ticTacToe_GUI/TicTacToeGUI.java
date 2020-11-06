@@ -1,6 +1,5 @@
 package ticTacToe_GUI;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,9 @@ import java.awt.*;
 
 import javax.swing.*;
 
+/**
+ * The type Tic tac toe gui.
+ */
 public class TicTacToeGUI extends JFrame implements Constants {
     private List<JButton> buttons = new ArrayList<JButton>();
     private JLabel playerLabel = new JLabel("Player:");
@@ -18,6 +20,9 @@ public class TicTacToeGUI extends JFrame implements Constants {
     private JLabel messageLabel = new JLabel("Message Window: ");
     private JTextArea messageBox = new JTextArea(5, 5);
 
+    /**
+     * Instantiates a new Tic tac toe gui.
+     */
     public TicTacToeGUI() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Mapping index 0,1,2 to row,col (0,0), (0,1), (0,2)...
@@ -55,40 +60,85 @@ public class TicTacToeGUI extends JFrame implements Constants {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         TicTacToeGUI gui = new TicTacToeGUI();
     }
 
+    /**
+     * Gets buttons.
+     *
+     * @return the buttons
+     */
     public List<JButton> getButtons() {
         return this.buttons;
     }
 
+    /**
+     * Gets player field.
+     *
+     * @return the player field
+     */
     public JTextField getPlayerField() {
         return this.playerField;
     }
 
+    /**
+     * Gets name field.
+     *
+     * @return the name field
+     */
     public JTextField getNameField() {
         return this.nameField;
     }
 
+    /**
+     * Gets message box.
+     *
+     * @return the message box
+     */
     public JTextArea getMessageBox() {
         return this.messageBox;
     }
 
+    /**
+     * Display error message.
+     *
+     * @param err the err
+     */
     public void displayErrorMessage(String err) {
         JOptionPane.showMessageDialog(this, err);
     }
 
+    /**
+     * Add button listener.
+     *
+     * @param listener the listener
+     */
     public void addButtonListener(ActionListener listener) {
         for (JButton b : buttons) {
             b.addActionListener(listener);
         }
     }
 
+    /**
+     * Add name listener.
+     *
+     * @param listener the listener
+     */
     public void addNameListener(ActionListener listener) {
         this.nameField.addActionListener(listener);
     }
 
+    /**
+     * Update board.
+     *
+     * @param response the response
+     */
     public void updateBoard(String response) {
         String[] responses = response.split("%");
         for (int i = 0; i < 9; i++) {

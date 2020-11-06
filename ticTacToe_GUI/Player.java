@@ -18,8 +18,9 @@ public class Player {
     /**
      * Constructs a player object with the specified values for name and mark.
      *
-     * @param name the name of the Player
-     * @param mark the mark that the player will play the game with. Either X or O
+     * @param name     the name of the Player
+     * @param mark     the mark that the player will play the game with. Either X or O
+     * @param myClient the my client
      */
     public Player(String name, char mark, ServerClient myClient) {
         this.name = name;
@@ -106,6 +107,11 @@ public class Player {
     }
 
 
+    /**
+     * Announcement.
+     *
+     * @param message the message
+     */
     public void announcement(String message) {
         try {
             myClient.sendMessage(message);

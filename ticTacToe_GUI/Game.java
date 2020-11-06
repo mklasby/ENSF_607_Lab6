@@ -21,6 +21,12 @@ public class Game implements Constants, Runnable {
 	private Board theBoard;
 	private Referee theRef;
 
+	/**
+	 * Instantiates a new Game.
+	 *
+	 * @param xPlayer the x player
+	 * @param oPlayer the o player
+	 */
 	public Game(Socket xPlayer, Socket oPlayer) {
 		try {
 			this.xClient = new ServerClient(xPlayer);
@@ -33,7 +39,7 @@ public class Game implements Constants, Runnable {
 
 	/**
 	 * Sets the referee and begins the game
-	 * 
+	 *
 	 * @param r Referee for the game to be played
 	 * @throws IOException if an input error occurs
 	 */
@@ -42,6 +48,11 @@ public class Game implements Constants, Runnable {
 		theRef.runTheGame();
 	}
 
+	/**
+	 * Announcement.
+	 *
+	 * @param message the message
+	 */
 	public void announcement(String message) {
 		try {
 			oClient.sendMessage(message);
