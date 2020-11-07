@@ -5,6 +5,10 @@ import java.net.Socket;
 
 /**
  * The type Server client.
+ * 
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class ServerClient {
 

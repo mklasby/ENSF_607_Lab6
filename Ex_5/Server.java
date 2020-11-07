@@ -10,8 +10,8 @@ import java.util.concurrent.Executors;
  * Simple server multi listening for clients on port 8099
  *
  * @author Davis Allan & Mike Lasby
- * @version 1.0
- * @since 2020 -11-01
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Server {
 

@@ -5,6 +5,10 @@ import java.io.IOException;
 /**
  * Represents a referee which has methods responsible for setting up the
  * opponents and beginning the first turn of the game.
+ * 
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Referee {
 

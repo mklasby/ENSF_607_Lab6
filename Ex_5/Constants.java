@@ -3,9 +3,9 @@ package Ex_5;
 /**
  * Defines constants for the for the required characters in a tic-tac-toe game
  *
- * @author Davis Allan
- * @version 1.0
- * @since Sept 30 2020
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public interface Constants {
 	/**

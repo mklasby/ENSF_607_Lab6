@@ -1,15 +1,13 @@
 package Ex_4;
 
-//STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
-
 import java.io.Serializable;
 
 /**
  * Represents a tic-tac-toe board and provides methods for playing the game.
  *
- * @author Davis Allan
- * @version 1.0
- * @since Sept 20 2020
+ * @author Davis Allan & Mike Lasby
+ * @version 2.0
+ * @since Nov., 7, 2020
  */
 public class Board implements Constants, Serializable {
 

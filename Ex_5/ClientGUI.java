@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 /**
  * Simple client to prompt user to enter Strings to be check for palindrome
  *
- * @author Davis Allan and Mike Lasby
- * @version 1.0
- * @since Nov. 1, 2020
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class ClientGUI {
     private Socket gameSocket;

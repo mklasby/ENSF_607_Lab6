@@ -10,6 +10,10 @@ import javax.swing.*;
 
 /**
  * The type Tic tac toe gui.
+ * 
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class TicTacToeGUI extends JFrame implements Constants {
     private List<JButton> buttons = new ArrayList<JButton>();
@@ -27,7 +31,7 @@ public class TicTacToeGUI extends JFrame implements Constants {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Mapping index 0,1,2 to row,col (0,0), (0,1), (0,2)...
         JPanel mainPanel = new JPanel();
-        mainPanel.setPreferredSize(new Dimension(600,350));
+        mainPanel.setPreferredSize(new Dimension(600, 350));
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 3));
 

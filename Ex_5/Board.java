@@ -7,9 +7,9 @@ import java.io.Serializable;
 /**
  * Represents a tic-tac-toe board and provides methods for playing the game.
  *
- * @author Davis Allan
- * @version 1.0
- * @since Sept 20 2020
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Board implements Constants, Serializable {
 
@@ -159,7 +159,8 @@ public class Board implements Constants, Serializable {
 	 * characters to draw a horizontal, vertical, or diagonal line
 	 *
 	 * @param mark the mark to be checked for a winning condition
-	 * @return 1 if the mark being checked has a winning condition, 0 if there is no         winning condition
+	 * @return 1 if the mark being checked has a winning condition, 0 if there is no
+	 *         winning condition
 	 */
 	int checkWinner(char mark) {
 		int row, col;

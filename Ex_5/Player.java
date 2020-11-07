@@ -5,6 +5,10 @@ import java.io.IOException;
 /**
  * Represents a player in a tic-tac-toe game and provides methods for running
  * making moves.
+ * 
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Player {
 

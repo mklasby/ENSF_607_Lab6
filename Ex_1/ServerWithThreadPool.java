@@ -11,17 +11,16 @@ import java.util.concurrent.Executors;
 
 /**
  * Simple server multi listening for clients on port 8099
+ * 
  * @author Davis Allan & Mike Lasby
  * @since 2020-11-01
  * @version 1.0
  */
 public class ServerWithThreadPool {
-
 	private Socket aSocket;
 	private ServerSocket serverSocket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
-
 	private ExecutorService pool;
 
 	/**
@@ -52,7 +51,6 @@ public class ServerWithThreadPool {
 				pool.execute(pal);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		pool.shutdown();
@@ -60,7 +58,6 @@ public class ServerWithThreadPool {
 			socketIn.close();
 			socketOut.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

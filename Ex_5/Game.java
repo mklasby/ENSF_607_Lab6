@@ -3,16 +3,14 @@ package Ex_5;
 import java.io.*;
 import java.net.Socket;
 
-//STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
-
 /**
  * Provides methods to create a game of tic-tac-toe to be played by two players.
  * Responsible for setting up the game and appointing the referee to then run
  * the game
  *
- * @author Davis Allan
- * @version 1.0
- * @since Sept 30 2020
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Game implements Constants, Runnable {
 

@@ -10,8 +10,8 @@ import java.util.concurrent.Executors;
  * Simple server multi listening for clients on port 8099
  *
  * @author Davis Allan & Mike Lasby
- * @version 1.0
- * @since 2020 -11-01
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class Server {
 
@@ -45,12 +45,10 @@ public class Server {
                 System.out.println("1 player has connected...");
                 oPlayer = serverSocket.accept();
                 System.out.println("2 players have connected, beginning a new game...");
-
                 Game game = new Game(xPlayer, oPlayer);
                 pool.execute(game);
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         pool.shutdown();
@@ -58,7 +56,6 @@ public class Server {
             xPlayer.close();
             oPlayer.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
