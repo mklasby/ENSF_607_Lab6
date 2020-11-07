@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 /**
- * The type Read record.
+ * Class to read .ser music records form file. Specify filename to read with
+ * extension as CLI argument.
+ * 
+ * @author Davis Allan & Mike Lasby
+ * @since Nov. 7, 2020
+ * @version 2.0
  */
 public class ReadRecord {
 
@@ -45,7 +50,7 @@ public class ReadRecord {
             e.printStackTrace();
         }
 
-    } // END OF METHOD
+    }
 
     /**
      * The entry point of application.
