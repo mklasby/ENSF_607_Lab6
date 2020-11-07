@@ -53,7 +53,8 @@ public class ReadRecord {
      * @param args the input arguments
      */
     public static void main(String[] args) {
+        System.out.print(args[0].toString());
         ReadRecord d = new ReadRecord();
-        d.readObjectsFromFile("mySongs.ser");
+        d.readObjectsFromFile(args[0].toString());
     }
 }
