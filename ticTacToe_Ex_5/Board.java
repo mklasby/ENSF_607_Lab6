@@ -1,4 +1,4 @@
-package ticTacToe_GUI;
+package ticTacToe_Ex_5;
 
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
 

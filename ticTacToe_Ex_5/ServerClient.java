@@ -1,4 +1,4 @@
-package ticTacToe_GUI;
+package ticTacToe_Ex_5;
 
 import java.io.*;
 import java.net.Socket;

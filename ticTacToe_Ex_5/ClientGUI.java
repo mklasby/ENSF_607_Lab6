@@ -1,10 +1,8 @@
-package ticTacToe_GUI;
+package ticTacToe_Ex_5;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
