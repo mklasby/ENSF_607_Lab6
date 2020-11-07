@@ -1,6 +1,5 @@
 package ticTacToe_GUI;
 
-
 import java.io.IOException;
 
 /**
@@ -19,7 +18,8 @@ public class Player {
      * Constructs a player object with the specified values for name and mark.
      *
      * @param name     the name of the Player
-     * @param mark     the mark that the player will play the game with. Either X or O
+     * @param mark     the mark that the player will play the game with. Either X or
+     *                 O
      * @param myClient the my client
      */
     public Player(String name, char mark, ServerClient myClient) {
@@ -96,7 +96,6 @@ public class Player {
             // Catches exceptions if they enter anything other than an integer
             row = Integer.parseInt(myClient.getMessage());
             col = Integer.parseInt(myClient.getMessage());
-            System.out.println("\n" + row + col + " ");
             if (board.isValidMove(row, col)) {
                 break;
             } else {
@@ -105,7 +104,6 @@ public class Player {
         }
         board.addMark(row, col, mark);
     }
-
 
     /**
      * Announcement.
