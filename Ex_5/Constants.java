@@ -1,4 +1,4 @@
-package ticTacToe_Ex_5;
+package Ex_5;
 
 /**
  * Defines constants for the for the required characters in a tic-tac-toe game
