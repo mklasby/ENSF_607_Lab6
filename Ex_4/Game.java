@@ -1,4 +1,4 @@
-package ticTacToe_DA;
+package Ex_4;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,7 +7,8 @@ import java.net.Socket;
 
 /**
  * Provides methods to create a game of tic-tac-toe to be played by two players.
- * Responsible for setting up the game and appointing the referee to then run the game
+ * Responsible for setting up the game and appointing the referee to then run
+ * the game
  *
  * @author Davis Allan
  * @version 1.0
@@ -33,7 +34,7 @@ public class Game implements Constants, Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		theBoard  = new Board();
+		theBoard = new Board();
 	}
 
 	/**
@@ -43,9 +44,9 @@ public class Game implements Constants, Runnable {
 	 * @throws IOException if an input error occurs
 	 */
 	public void appointReferee(Referee r) throws IOException {
-        theRef = r;
-    	theRef.runTheGame();
-    }
+		theRef = r;
+		theRef.runTheGame();
+	}
 
 	/**
 	 * Announcement.
@@ -53,7 +54,7 @@ public class Game implements Constants, Runnable {
 	 * @param message the message
 	 */
 	public void announcement(String message) {
-    	try {
+		try {
 			oClient.sendMessage(message);
 			xClient.sendMessage(message);
 		} catch (IOException e) {

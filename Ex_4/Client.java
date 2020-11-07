@@ -1,4 +1,4 @@
-package ticTacToe_DA;
+package Ex_4;
 
 import java.io.*;
 import java.net.Socket;

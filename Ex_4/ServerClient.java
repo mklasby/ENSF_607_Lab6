@@ -1,4 +1,4 @@
-package ticTacToe_DA;
+package Ex_4;
 
 import java.io.*;
 import java.net.Socket;
@@ -30,9 +30,9 @@ public class ServerClient {
      * @return the message
      * @throws IOException the io exception
      */
-    public String getMessage () throws IOException {
+    public String getMessage() throws IOException {
         StringBuffer response = null;
-        while (response == null){
+        while (response == null) {
             response = new StringBuffer(messageIn.readLine());
         }
         return response.toString();

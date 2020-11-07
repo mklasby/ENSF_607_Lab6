@@ -1,4 +1,4 @@
-package ticTacToe_DA;
+package Ex_4;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -55,8 +55,8 @@ public class Server {
         }
         pool.shutdown();
         try {
-           xPlayer.close();
-           oPlayer.close();
+            xPlayer.close();
+            oPlayer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -1,10 +1,10 @@
-package ticTacToe_DA;
+package Ex_4;
 
 import java.io.IOException;
 
 /**
- * Represents a referee which has methods responsible for setting up the opponents and
- * beginning the first turn of the game.
+ * Represents a referee which has methods responsible for setting up the
+ * opponents and beginning the first turn of the game.
  */
 public class Referee {
 
@@ -40,8 +40,8 @@ public class Referee {
     }
 
     /**
-     * Sets the two Players as each other's opponents and then begins the first turn of
-     * the game
+     * Sets the two Players as each other's opponents and then begins the first turn
+     * of the game
      *
      * @throws IOException if an I/O error occurs
      */

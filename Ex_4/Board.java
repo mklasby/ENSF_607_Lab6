@@ -1,4 +1,4 @@
-package ticTacToe_DA;
+package Ex_4;
 
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
 
@@ -17,12 +17,13 @@ public class Board implements Constants, Serializable {
 	private int markCount;
 
 	/**
-	 * Constructs the Board object and initializes a blank 3x3 grid for starting a new game
+	 * Constructs the Board object and initializes a blank 3x3 grid for starting a
+	 * new game
 	 */
 	public Board() {
 		markCount = 0;
 		theBoard = new char[3][];
-		//loop to create a 3x3 array filled with spaces to represent a blank board
+		// loop to create a 3x3 array filled with spaces to represent a blank board
 		for (int i = 0; i < 3; i++) {
 			theBoard[i] = new char[3];
 			for (int j = 0; j < 3; j++)
@@ -85,11 +86,11 @@ public class Board implements Constants, Serializable {
 
 		result = displayColumnHeaders(result);
 		result = addHyphens(result);
-		//drawing the rows
+		// drawing the rows
 		for (int row = 0; row < 3; row++) {
 			result = addSpaces(result);
 			result.append("    row ").append(row).append(' ');
-			//drawing the columns
+			// drawing the columns
 			for (int col = 0; col < 3; col++)
 				result.append("|  ").append(getMark(row, col)).append("  ");
 			result.append("|\n");
@@ -107,7 +108,7 @@ public class Board implements Constants, Serializable {
 	 * @param mark the character to be added to the board
 	 */
 	public void addMark(int row, int col, char mark) {
-		
+
 		theBoard[row][col] = mark;
 		markCount++;
 	}
@@ -138,17 +139,18 @@ public class Board implements Constants, Serializable {
 	}
 
 	/**
-	 * Checks to see if a player has won the game by placing three matching characters to draw a
-	 * horizontal, vertical, or diagonal line
+	 * Checks to see if a player has won the game by placing three matching
+	 * characters to draw a horizontal, vertical, or diagonal line
 	 *
 	 * @param mark the mark to be checked for a winning condition
-	 * @return 1 if the mark being checked has a winning condition, 0 if there is no winning condition
+	 * @return 1 if the mark being checked has a winning condition, 0 if there is no
+	 *         winning condition
 	 */
 	int checkWinner(char mark) {
 		int row, col;
 		int result = 0;
 
-		//checking for a horizontal win
+		// checking for a horizontal win
 		for (row = 0; result == 0 && row < 3; row++) {
 			int row_result = 1;
 			for (col = 0; row_result == 1 && col < 3; col++)
@@ -158,7 +160,7 @@ public class Board implements Constants, Serializable {
 				result = 1;
 		}
 
-		//checking for a vertical win
+		// checking for a vertical win
 		for (col = 0; result == 0 && col < 3; col++) {
 			int col_result = 1;
 			for (row = 0; col_result != 0 && row < 3; row++)
@@ -167,7 +169,7 @@ public class Board implements Constants, Serializable {
 			if (col_result != 0)
 				result = 1;
 		}
-		//checking if there is a diagonal win from top left to bottom right of the grid
+		// checking if there is a diagonal win from top left to bottom right of the grid
 		if (result == 0) {
 			int diag1Result = 1;
 			for (row = 0; diag1Result != 0 && row < 3; row++)
@@ -176,7 +178,8 @@ public class Board implements Constants, Serializable {
 			if (diag1Result != 0)
 				result = 1;
 		}
-		//checking if there is a diagonal win from the top right to the bottom left of the grid
+		// checking if there is a diagonal win from the top right to the bottom left of
+		// the grid
 		if (result == 0) {
 			int diag2Result = 1;
 			for (row = 0; diag2Result != 0 && row < 3; row++)
@@ -203,7 +206,8 @@ public class Board implements Constants, Serializable {
 	}
 
 	/**
-	 * Prints a horizontal row of hyphens representing the boundaries in the game board
+	 * Prints a horizontal row of hyphens representing the boundaries in the game
+	 * board
 	 *
 	 * @param sb the sb
 	 * @return the string builder
