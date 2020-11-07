@@ -53,8 +53,12 @@ public class ReadRecord {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        System.out.print(args[0].toString());
         ReadRecord d = new ReadRecord();
+        if (args.length == 0) {
+            System.out.print(
+                    "Please specify file to read as command line argument eg., java ReadRecord allSongs.ser\nGoodbye\n");
+            System.exit(1);
+        }
         d.readObjectsFromFile(args[0].toString());
     }
 }
